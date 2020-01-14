@@ -38,7 +38,7 @@ app.get('/about',(req,res) => {
 
 app.get('/help',(req,res) => {
     res.render('help', {
-        'title':'Help Page',
+        'title':'Help',
         'helpText':'This is some text',
         'name':'Naseem' 
     })
@@ -59,14 +59,14 @@ app.get('/weather',(req,res)=>{
                 'error':error
             })
         }
-        forecast(latitude, longitude, (error,{temperature,precipProbability}) => {
+        forecast(latitude, longitude, (error,data) => {
            if(error){
                 return res.send({
                     'error':error
                 })
            }
            res.send({
-                forecast:'This is currently '+temperature+' degrees out there, There are '+((precipProbability)*100) +'% chances of rain',
+                forecast:data,
                 location:location,
                 address:req.query.address
             })

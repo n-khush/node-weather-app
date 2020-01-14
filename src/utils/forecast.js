@@ -9,7 +9,7 @@ const forecast = (lat,long,callback) => {
             callback(body.error,undefined)
         }
         else {
-            callback(undefined,body.currently)
+             callback(undefined,body.daily.data[0].summary+'. This is currently '+body.currently.temperature+' degrees out there, the high today is '+body.daily.data[0].temperatureHigh+' with a low of '+body.daily.data[0].temperatureLow+'. There are '+((body.currently.precipProbability)*100) +'% chances of rain')
         }        
     })
 }
