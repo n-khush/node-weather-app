@@ -7,7 +7,7 @@ search.addEventListener('click',(event)=>{
    errorMessage.textContent = 'Please wait...'
    forecast.textContent = ''
    const weatherSearch = document.getElementById('location')
-   fetch("http://localhost:3000/weather?address="+weatherSearch.value).then((response)=>{
+   fetch("/weather?address="+weatherSearch.value).then((response)=>{
       response.json().then((data) =>{
          if(data.error){
             errorMessage.textContent = data.error
